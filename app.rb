@@ -14,3 +14,14 @@ after { puts }                                                              #
 
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
+
+# need to add a route (/ is the home):
+get "/" do
+    puts "params: #{params}" #for debugging; only prints to console
+    
+    pp events_table.all.to_a #get all data from events table
+     # list the events using loop
+    @events = events_table.all.to_a # first, store events in a var; next add loop to events.erb
+    
+    view "events"
+end
